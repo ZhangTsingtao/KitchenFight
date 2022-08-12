@@ -9,6 +9,8 @@ public class ThirdPersonCam : MonoBehaviour
     public Transform player;
     public Transform playerObj;
     public Rigidbody rb;
+    public Vector3 offset;
+    public float smoothSpeed = 0.125f;
 
     public float rotationSpeed;
 
@@ -18,7 +20,7 @@ public class ThirdPersonCam : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // rotate orientation
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
@@ -32,4 +34,5 @@ public class ThirdPersonCam : MonoBehaviour
         if (inputDir != Vector3.zero)
             player.forward = Vector3.Slerp(player.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
     }
+
 }

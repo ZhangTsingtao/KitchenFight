@@ -13,7 +13,7 @@ public class PlayerMovementTutorial : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
-    bool readyToJump;
+    int readyToJump = 2;
 
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
@@ -25,6 +25,9 @@ public class PlayerMovementTutorial : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
+    bool isJumping;
+    public float jumpTime;
+    float jumpTimeCounter;
 
     public Transform orientation;
 
@@ -34,15 +37,17 @@ public class PlayerMovementTutorial : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
-
+    
+    [SerializeField] ParticleSystem JumpParticle;
+    Quaternion particlerotation = Quaternion.identity;
+    Vector3 dashDirection;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        readyToJump = true;
-
+        readyToJump = 2;
     }
 
     private void Update()
@@ -58,6 +63,9 @@ public class PlayerMovementTutorial : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+        JumpHeightVariable();
+        
     }
 
     private void FixedUpdate()
@@ -71,14 +79,19 @@ public class PlayerMovementTutorial : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        if(Input.GetKeyDown(jumpKey) && readyToJump > 1)
         {
-            readyToJump = false;
-
+            readyToJump --;
             Jump();
-
-            Invoke(nameof(ResetJump), jumpCooldown);
         }
+
+        if (grounded)
+            ResetJump();//Invoke(nameof(ResetJump), jumpCooldown);
+
+        //Dash
+        if (Input.GetKey(KeyCode.Q))
+            Dash();
+
     }
 
     private void MovePlayer()
@@ -99,7 +112,7 @@ public class PlayerMovementTutorial : MonoBehaviour
     private void SpeedControl()
     {
         //Debug.Log(rb.velocity.magnitude);
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        Vector3 flatVel = new(rb.velocity.x, 0f, rb.velocity.z);
 
         // limit velocity if needed
         if(flatVel.magnitude > moveSpeed)
@@ -114,13 +127,65 @@ public class PlayerMovementTutorial : MonoBehaviour
 
     private void Jump()
     {
+        isJumping = true;
+        jumpTimeCounter = jumpTime;
+
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse );
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        
+        //Play Particle
+        if (!grounded)
+        {
+            particlerotation.eulerAngles = new Vector3(90, 0, 0);
+            JumpParticle.transform.rotation = particlerotation;
+            JumpParticle.Play();
+        }
+    }
+
+    private void JumpHeightVariable()
+    {
+        //jump height variable test
+        if (Input.GetKey(KeyCode.Space) && isJumping)
+        {
+            Debug.Log("Awake");
+            if (jumpTimeCounter > 0)
+            {
+                rb.AddForce(transform.up * jumpForce, ForceMode.Force);
+                jumpTimeCounter -= Time.deltaTime;
+                Debug.Log("still holding space, jumptime left " + jumpTimeCounter);
+            }
+            else
+            {
+                isJumping = false;
+                Debug.Log("should not be jumping, jumptime left " + jumpTimeCounter);
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
+            Debug.Log("space key up, jumptime left " + jumpTimeCounter);
+        }
+
+    }
+
+    private void Dash()
+    {
+        dashDirection = JumpParticle.transform.position - orientation.transform.position;
+        dashDirection = new Vector3(dashDirection.x, 0, dashDirection.z);
+        rb.AddForce(dashDirection.normalized * jumpForce, ForceMode.Impulse );
+        Debug.Log("dash direction: " + dashDirection);
+
+        //particle
+        JumpParticle.transform.localRotation = Quaternion.Euler(180, 0, 0);
+        JumpParticle.Play();
+        Debug.Log("particle direction: " + JumpParticle.transform.rotation);
+
     }
     private void ResetJump()
     {
-        readyToJump = true;
+        readyToJump = 2;
     }
 }
