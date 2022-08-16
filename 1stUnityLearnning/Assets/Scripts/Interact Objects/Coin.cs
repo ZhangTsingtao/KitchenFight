@@ -11,9 +11,7 @@ public class Coin : MonoBehaviour {
             ScoreManager.instance.AddPoint();
             Debug.Log(other.name + " ≈ˆµΩ¡ÀŒ“");
 
-            //var em = collectParticle.emission;
             var dur = collectParticle.main.duration;
-            //em.enabled = true;
             Debug.Log("coin duration: " + dur);
 
             collectParticle.Play();
