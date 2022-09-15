@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class PlayerMovementTutorial : MonoBehaviour
 {
@@ -13,7 +10,7 @@ public class PlayerMovementTutorial : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
-    int readyToJump = 2;
+    public int readyToJump = 2;
 
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
@@ -24,7 +21,7 @@ public class PlayerMovementTutorial : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    public bool grounded;
     bool isJumping;
     public float jumpTime;
     float jumpTimeCounter;
@@ -34,13 +31,15 @@ public class PlayerMovementTutorial : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
-    Vector3 moveDirection;
+    public Vector3 moveDirection;
 
-    Rigidbody rb;
+    public Rigidbody rb;
     
     [SerializeField] ParticleSystem JumpParticle;
     Quaternion particlerotation = Quaternion.identity;
     Vector3 dashDirection;
+
+
 
     private void Start()
     {
@@ -48,6 +47,7 @@ public class PlayerMovementTutorial : MonoBehaviour
         rb.freezeRotation = true;
 
         readyToJump = 2;
+
     }
 
     private void Update()
@@ -99,8 +99,13 @@ public class PlayerMovementTutorial : MonoBehaviour
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
+        //damn this Quick Actions available
+
+        //damn this Quick Actions available
+
+
         // on ground
-        if(grounded)
+        if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         //rb.velocity = new Vector3(moveDirection.x * moveSpeed, rb.velocity.y, moveDirection.z * moveSpeed);
 
