@@ -6,8 +6,8 @@ public class CatAnimation : MonoBehaviour
 {
     private Animator anim;
 
-    private bool animisJumping;
-    private bool animisLanded;
+    //private bool animisJumping;
+    //private bool animisLanded;
 
     public PlayerMovementTutorial playerScript;
     // Start is called before the first frame update
@@ -31,20 +31,20 @@ public class CatAnimation : MonoBehaviour
         if(Input.GetKey(KeyCode.Space) && playerScript.readyToJump > 1)
         {
             anim.SetBool("isJumping", true);
-            animisJumping = true;
+            //animisJumping = true;
         }
         if (playerScript.grounded)
         {
             anim.SetBool("isJumping", false);
             anim.SetBool("isLanded", true);
             anim.SetBool("isAir", false);
-            animisLanded = true;
-            animisJumping = false;
+            //animisLanded = true;
+            //animisJumping = false;
         }
         else
         {
             anim.SetBool("isLanded", false);
-            animisLanded = false;
+            //animisLanded = false;
             if (playerScript.rb.velocity.y < 0)
             {
                 anim.SetBool("isAir", true);
