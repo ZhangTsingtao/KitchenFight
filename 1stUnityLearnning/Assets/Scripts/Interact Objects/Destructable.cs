@@ -15,6 +15,12 @@ public class Destructable : MonoBehaviour
         {
 
             Shattered = Instantiate(destroyedVersion, transform.position, transform.rotation);
+
+            foreach(Rigidbody rb in Shattered.GetComponentsInChildren<Rigidbody>() )
+            {
+                Vector3 shatterForce = (rb.transform.position - transform.position).normalized * 50;
+                rb.AddForce(shatterForce);
+            }
             
             //gameObject.SetActive(false);
             MeshRenderer originalMesh = gameObject.GetComponent<MeshRenderer>();

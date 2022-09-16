@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4219199523915190262}
   - component: {fileID: 3217985760942818563}
   - component: {fileID: 5158572916043559906}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plate_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 7806678008325588163}
   - component: {fileID: 2638549415109637358}
   - component: {fileID: 5525639726618126962}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plate_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 5729210957281410321}
   - component: {fileID: 638768319294548835}
   - component: {fileID: 2143954744699571714}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plate_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5673070423778148061}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlateCrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 2704661146726458789}
   - component: {fileID: 8143378723497612999}
   - component: {fileID: 87674010392616674}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plate_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

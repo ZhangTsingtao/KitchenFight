@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7720103932029874943}
   - component: {fileID: 2729059909549057746}
   - component: {fileID: 7403812149521390422}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: OilTank_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 8489136328183035007}
   - component: {fileID: 1908234344399361133}
   - component: {fileID: 4379046666492278872}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: OilTank_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 3937033095288307774}
   - component: {fileID: 5664756763033282830}
   - component: {fileID: 291369176236777229}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: OilTank_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 4045499595923710262}
   - component: {fileID: 8952189685163956422}
   - component: {fileID: 6881166922871935758}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: OilTank_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 8930298149443478785}
   - component: {fileID: 3626255748242545400}
   - component: {fileID: 9050168736182693079}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: OilTank_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8773584311582471677}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: OilTankCrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

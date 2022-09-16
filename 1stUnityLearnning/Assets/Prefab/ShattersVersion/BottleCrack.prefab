@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4928708095045570946}
   - component: {fileID: 7210422628977201637}
   - component: {fileID: 6880242396269633105}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bottle_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5252305058466439645}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BottleCrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 7396620718666683195}
   - component: {fileID: 1217790476769575949}
   - component: {fileID: 6232029782489599358}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bottle_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 6520572321923637332}
   - component: {fileID: 9134053496336964486}
   - component: {fileID: 4264054618853830519}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bottle_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

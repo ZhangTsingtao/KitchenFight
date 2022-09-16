@@ -7,31 +7,39 @@ public class Slippery : MonoBehaviour
     public Collider playerCollider;
     public PhysicMaterial slipperyMaterial;
     public ParticleSystem slipperyParticle;
-    private void OnTriggerEnter(Collider other)
+    public float slipperyTime = 7f;
+
+    public bool beeninthePool;
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Yekis");
             playerCollider.material = slipperyMaterial;
             slipperyParticle.Play();
+            beeninthePool = true;
         }
     }
-
+    
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && beeninthePool)
         {
             Debug.Log("left the surface");
             //playerCollider.material = null;
             //Debug.Log("Should be back to normal");
-            Invoke(nameof(BacktoNormalMaterial), 5f);
+            Invoke(nameof(BacktoNormalMaterial), slipperyTime);
         }
     }
     private void BacktoNormalMaterial()
     {
-        playerCollider.material = null;
-        slipperyParticle.Stop();
-        Debug.Log("Should be back to normal");
+        if (beeninthePool)
+        {
+            playerCollider.material = null;
+            slipperyParticle.Stop();
+            beeninthePool = false;
+            Debug.Log("Should be back to normal");
+        }
 
     }
 }
