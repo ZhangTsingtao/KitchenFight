@@ -154,24 +154,24 @@ public class PlayerMovementTutorial : MonoBehaviour
         //jump height variable test
         if (Input.GetKey(KeyCode.Space) && isJumping)
         {
-            Debug.Log("Awake");
+            //Debug.Log("Awake");
             if (jumpTimeCounter > 0)
             {
                 rb.AddForce(transform.up * jumpForce, ForceMode.Force);
                 jumpTimeCounter -= Time.deltaTime;
-                Debug.Log("still holding space, jumptime left " + jumpTimeCounter);
+                //Debug.Log("still holding space, jumptime left " + jumpTimeCounter);
             }
             else
             {
                 isJumping = false;
-                Debug.Log("should not be jumping, jumptime left " + jumpTimeCounter);
+                //Debug.Log("should not be jumping, jumptime left " + jumpTimeCounter);
             }
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isJumping = false;
-            Debug.Log("space key up, jumptime left " + jumpTimeCounter);
+            //Debug.Log("space key up, jumptime left " + jumpTimeCounter);
         }
 
     }

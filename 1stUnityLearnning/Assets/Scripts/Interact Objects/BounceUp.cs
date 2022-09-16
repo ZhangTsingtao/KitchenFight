@@ -6,6 +6,8 @@ public class BounceUp : MonoBehaviour
 {
     public float BouncePower;
     public Vector3 BounceDir;
+    private bool Stepped;
+    public float bounceTime = 0.5f;
 
     private Rigidbody PlayerRigidBody;
 
@@ -19,8 +21,25 @@ public class BounceUp : MonoBehaviour
         {
 
             PlayerRigidBody = playercollision.GetComponent<Rigidbody>();
-            PlayerRigidBody.AddForce(BounceDir * BouncePower, ForceMode.Impulse);
-            Debug.Log("Light it up");
+            Stepped = true;
+            //PlayerRigidBody.AddForce(BounceDir * BouncePower, ForceMode.Impulse);
+            Debug.Log("Stepped: " + Stepped);
+
+            Invoke("StopBounce", bounceTime);
+        }
+        
+    }
+
+    private void StopBounce()
+    {
+        Stepped = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (Stepped)
+        {
+            PlayerRigidBody.AddForce(BounceDir * BouncePower, ForceMode.Force);
         }
     }
 }
