@@ -11,6 +11,8 @@ public class BounceUp : MonoBehaviour
 
     private Rigidbody PlayerRigidBody;
 
+    public ParticleSystem dashParticle;
+
     private void Awake()
     {
         BounceDir = transform. TransformDirection(Vector3.forward);
@@ -22,6 +24,7 @@ public class BounceUp : MonoBehaviour
 
             PlayerRigidBody = playercollision.GetComponent<Rigidbody>();
             Stepped = true;
+            dashParticle.Play();
             //PlayerRigidBody.AddForce(BounceDir * BouncePower, ForceMode.Impulse);
             Debug.Log("Stepped: " + Stepped);
 

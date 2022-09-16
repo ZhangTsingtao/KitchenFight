@@ -6,12 +6,14 @@ public class Slippery : MonoBehaviour
 {
     public Collider playerCollider;
     public PhysicMaterial slipperyMaterial;
+    public ParticleSystem slipperyParticle;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Yekis");
             playerCollider.material = slipperyMaterial;
+            slipperyParticle.Play();
         }
     }
 
@@ -28,6 +30,7 @@ public class Slippery : MonoBehaviour
     private void BacktoNormalMaterial()
     {
         playerCollider.material = null;
+        slipperyParticle.Stop();
         Debug.Log("Should be back to normal");
 
     }
