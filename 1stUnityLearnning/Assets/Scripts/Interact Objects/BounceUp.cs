@@ -24,9 +24,11 @@ public class BounceUp : MonoBehaviour
 
             PlayerRigidBody = playercollision.GetComponent<Rigidbody>();
             Stepped = true;
+            
             dashParticle.Play();
-            //PlayerRigidBody.AddForce(BounceDir * BouncePower, ForceMode.Impulse);
-            Debug.Log("Stepped: " + Stepped);
+            FindObjectOfType<AudioManager>().Play("bounceUp");
+
+            //Debug.Log("Stepped: " + Stepped);
 
             Invoke("StopBounce", bounceTime);
         }

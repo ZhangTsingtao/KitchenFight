@@ -22,6 +22,7 @@ public class PlayerMovementTutorial : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     public bool grounded;
+    bool checkitground;
     bool isJumping;
     public float jumpTime;
     float jumpTimeCounter;
@@ -35,7 +36,8 @@ public class PlayerMovementTutorial : MonoBehaviour
 
     public Rigidbody rb;
     
-    [SerializeField] ParticleSystem JumpParticle;
+    public ParticleSystem JumpParticle;
+    public ParticleSystem Dust;
     Quaternion particlerotation = Quaternion.identity;
     Vector3 dashDirection;
 
@@ -55,8 +57,10 @@ public class PlayerMovementTutorial : MonoBehaviour
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
+
         MyInput();
         SpeedControl();
+        Checkit();
 
         // handle drag
         if (grounded)
@@ -99,11 +103,6 @@ public class PlayerMovementTutorial : MonoBehaviour
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        //damn this Quick Actions available
-
-        //damn this Quick Actions available
-
-
         // on ground
         if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
@@ -139,7 +138,9 @@ public class PlayerMovementTutorial : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse );
 
-        
+        //Play Audio
+        FindObjectOfType<AudioManager>().Play("jump");
+
         //Play Particle
         if (!grounded)
         {
@@ -192,5 +193,19 @@ public class PlayerMovementTutorial : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = 2;
+    }
+
+    private void Checkit()
+    {
+        if(checkitground != grounded)
+        {
+            checkitground = grounded;
+            if (grounded)
+            {
+                Dust.Play();
+                FindObjectOfType<AudioManager>().Play("land");
+            }
+        }
+
     }
 }

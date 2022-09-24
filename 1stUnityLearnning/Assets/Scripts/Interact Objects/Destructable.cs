@@ -31,6 +31,7 @@ public class Destructable : MonoBehaviour
             Debug.Log(other.gameObject.name + " hit me");
 
             shatterParticle.Play(); //Play particle
+            FindObjectOfType<AudioManager>().Play("explosion");
 
 
             ScoreManager.instance.AddPoint(); //Add points
