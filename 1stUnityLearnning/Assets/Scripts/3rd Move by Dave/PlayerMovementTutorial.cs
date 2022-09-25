@@ -57,8 +57,8 @@ public class PlayerMovementTutorial : MonoBehaviour
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
-
-        MyInput();
+        if(!PauseMenu.isPaused)
+            MyInput();
         SpeedControl();
         Checkit();
 
@@ -105,12 +105,12 @@ public class PlayerMovementTutorial : MonoBehaviour
 
         // on ground
         if (grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(10f * moveSpeed * moveDirection.normalized, ForceMode.Force);
         //rb.velocity = new Vector3(moveDirection.x * moveSpeed, rb.velocity.y, moveDirection.z * moveSpeed);
 
         // in air
         else if(!grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(10f * airMultiplier * moveSpeed * moveDirection.normalized, ForceMode.Force);
     }
 
     private void SpeedControl()

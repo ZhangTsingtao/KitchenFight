@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8141734592849347441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8141734592849347442}
+  - component: {fileID: 8141734592849347443}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8141734592849347442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8141734592849347441}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.89999, y: 4.2344284, z: -8.535961}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8141734592849347443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8141734592849347441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87bc11133aac1d14985530e3c4024406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: theme
+    clip: {fileID: 8300000, guid: 573bbcd1d5469d74e8af586cd0015bac, type: 3}
+    volume: 0.464
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: jump
+    clip: {fileID: 8300000, guid: e2237e0da7a20804797db45327a8bb7a, type: 3}
+    volume: 0.2
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: land
+    clip: {fileID: 8300000, guid: 7a6d0c7d722c7dc46ab5fae28edd65e9, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: bounceUp
+    clip: {fileID: 8300000, guid: e8e8005430e8d9344bfe6cd0547aed04, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: wet
+    clip: {fileID: 8300000, guid: 2cc600cd2cf8b4543a35f6847319b220, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: explosion
+    clip: {fileID: 8300000, guid: cd9687840651eea4b81bf4ed71da4a2f, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
