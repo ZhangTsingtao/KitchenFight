@@ -28,7 +28,7 @@ public class Destructable : MonoBehaviour
             BoxCollider originalCollider = gameObject.GetComponent<BoxCollider>();
             originalCollider.enabled = false;
 
-            Debug.Log(other.gameObject.name + " hit me");
+            //Debug.Log(other.gameObject.name + " hit me");
 
             shatterParticle.Play(); //Play particle
             FindObjectOfType<AudioManager>().Play("explosion");

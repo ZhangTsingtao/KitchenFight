@@ -90,7 +90,7 @@ public class PlayerMovementTutorial : MonoBehaviour
         if (fuJumpHeight)
         {
             rb.AddForce(transform.up * jumpForce, ForceMode.Force);
-            Debug.Log(jumpTimeCounter);
+            //Debug.Log(jumpTimeCounter);
         }
     }
 
