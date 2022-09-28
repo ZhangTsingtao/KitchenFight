@@ -7200,7 +7200,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13538,7 +13538,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18468,6 +18468,7 @@ MonoBehaviour:
   jumpForce: 6
   jumpCooldown: 0
   airMultiplier: 0.5
+  readyToJump: 2
   walkSpeed: 0
   sprintSpeed: 0
   jumpKey: 32
@@ -18475,10 +18476,14 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 72
+  grounded: 0
   jumpTime: 0.35
   orientation: {fileID: 5715428399180042723}
   moveDirection: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
   JumpParticle: {fileID: 1293996570}
+  Dust: {fileID: 0}
+  fuJump: 0
 --- !u!4 &5715428399078570218
 Transform:
   m_ObjectHideFlags: 0

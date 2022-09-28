@@ -31,6 +31,7 @@ public class PlayerMovementTutorial : MonoBehaviour
 
     float horizontalInput;
     float verticalInput;
+    public float rotateSen;
 
     public Vector3 moveDirection;
 
@@ -41,7 +42,9 @@ public class PlayerMovementTutorial : MonoBehaviour
     Quaternion particlerotation = Quaternion.identity;
     Vector3 dashDirection;
 
-
+    private bool fuDash;
+    public bool fuJump;
+    private bool fuJumpHeight;
 
     private void Start()
     {
@@ -50,31 +53,45 @@ public class PlayerMovementTutorial : MonoBehaviour
 
         readyToJump = 2;
 
+        if (PlayerPrefs.HasKey("MouseSen"))
+            rotateSen = PlayerPrefs.GetFloat("MouseSen") * 0.01f;
     }
 
     private void Update()
     {
+        if (!PauseMenu.isPaused)
+            MyInput();
+        CheckItGround();
+
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
-
-        if(!PauseMenu.isPaused)
-            MyInput();
-        SpeedControl();
-        Checkit();
 
         // handle drag
         if (grounded)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
-
-        JumpHeightVariable();
-        
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+        SpeedControl();
+        
+        if (fuDash)
+            Dash();
+        
+        if (fuJump)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        }
+        
+        if (fuJumpHeight)
+        {
+            rb.AddForce(transform.up * jumpForce, ForceMode.Force);
+            Debug.Log(jumpTimeCounter);
+        }
     }
 
     private void MyInput()
@@ -82,20 +99,23 @@ public class PlayerMovementTutorial : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        // when to jump
-        if(Input.GetKeyDown(jumpKey) && readyToJump > 1)
+        //Jump
+        if (Input.GetKeyDown(jumpKey) && readyToJump > 1)
         {
-            readyToJump --;
+            readyToJump--;
             Jump();
         }
 
         if (grounded)
-            ResetJump();//Invoke(nameof(ResetJump), jumpCooldown);
+            ResetJump();
 
         //Dash
         if (Input.GetKey(KeyCode.Q))
-            Dash();
+            fuDash = true;
+        else
+            fuDash = false;
 
+        JumpHeightVariable();
     }
 
     private void MovePlayer()
@@ -134,9 +154,7 @@ public class PlayerMovementTutorial : MonoBehaviour
         isJumping = true;
         jumpTimeCounter = jumpTime;
 
-        // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse );
+        fuJump = true;
 
         //Play Audio
         FindObjectOfType<AudioManager>().Play("jump");
@@ -158,23 +176,24 @@ public class PlayerMovementTutorial : MonoBehaviour
             //Debug.Log("Awake");
             if (jumpTimeCounter > 0)
             {
-                rb.AddForce(transform.up * jumpForce, ForceMode.Force);
+                fuJumpHeight = true;
                 jumpTimeCounter -= Time.deltaTime;
-                //Debug.Log("still holding space, jumptime left " + jumpTimeCounter);
             }
             else
-            {
+            { 
                 isJumping = false;
-                //Debug.Log("should not be jumping, jumptime left " + jumpTimeCounter);
+                fuJump = false;
+                fuJumpHeight = false;
+                Debug .Log("Shouldn't be jumping");
             }
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isJumping = false;
-            //Debug.Log("space key up, jumptime left " + jumpTimeCounter);
+            fuJump = false;
+            fuJumpHeight = false;
         }
-
     }
 
     private void Dash()
@@ -195,7 +214,7 @@ public class PlayerMovementTutorial : MonoBehaviour
         readyToJump = 2;
     }
 
-    private void Checkit()
+    private void CheckItGround()
     {
         if(checkitground != grounded)
         {

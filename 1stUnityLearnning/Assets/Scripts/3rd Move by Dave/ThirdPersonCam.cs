@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class ThirdPersonCam : MonoBehaviour
@@ -14,10 +13,17 @@ public class ThirdPersonCam : MonoBehaviour
 
     public float rotationSpeed;
 
+    public float mouseSpeed = 1f;
+
+    public CinemachineFreeLook freelookCam;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        freelookCam.m_XAxis.m_MaxSpeed = PlayerPrefs.GetFloat("MouseSen") * 2 + 100f;
+        freelookCam.m_YAxis.m_MaxSpeed = PlayerPrefs.GetFloat("MouseSen") / 50f + 1f;
     }
 
     private void FixedUpdate()

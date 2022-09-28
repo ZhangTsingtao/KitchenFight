@@ -176,7 +176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -419,6 +419,8 @@ MonoBehaviour:
   player: {fileID: 554350933}
   playerObj: {fileID: 554350933}
   rb: {fileID: 554350942}
+  offset: {x: 0, y: 0, z: 0}
+  smoothSpeed: 0.125
   rotationSpeed: 8
 --- !u!114 &529923854
 MonoBehaviour:
@@ -531,6 +533,7 @@ MonoBehaviour:
   jumpForce: 7
   jumpCooldown: 0.23
   airMultiplier: 0.5
+  readyToJump: 2
   walkSpeed: 0
   sprintSpeed: 0
   jumpKey: 32
@@ -538,7 +541,14 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 2147483647
+  grounded: 0
+  jumpTime: 0
   orientation: {fileID: 229609891}
+  moveDirection: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
+  JumpParticle: {fileID: 0}
+  Dust: {fileID: 0}
+  fuJump: 0
 --- !u!136 &554350941
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1457,7 +1467,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

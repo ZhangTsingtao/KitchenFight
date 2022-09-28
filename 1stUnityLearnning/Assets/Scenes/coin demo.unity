@@ -5055,41 +5055,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -150120879314253014, guid: 8f3532ac63858e04fb83508b0385c1b3, type: 3}
---- !u!1 &1137661848 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -1374161610312379201, guid: 8f3532ac63858e04fb83508b0385c1b3, type: 3}
-  m_PrefabInstance: {fileID: 233538922}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1137661850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137661848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f9da66a938c71940889d5a92e9addd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Renderers: []
-  Position: {x: 0, y: 0, z: 0}
-  Materials: []
-  InitialAlpha: 0
---- !u!64 &1137661851
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137661848}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2967259907906608757, guid: 8f3532ac63858e04fb83508b0385c1b3, type: 3}
 --- !u!4 &1142666093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4305336451390690901, guid: d8b9ec92b5993154dad3d4687baa5d4e, type: 3}
@@ -8731,6 +8696,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThirdPersonPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 5715428397799456499, guid: 7936cfdfca46ac34dab99fc7c25537f6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    - target: {fileID: 5715428398666877086, guid: 7936cfdfca46ac34dab99fc7c25537f6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7936cfdfca46ac34dab99fc7c25537f6, type: 3}
 --- !u!4 &2037394450 stripped
