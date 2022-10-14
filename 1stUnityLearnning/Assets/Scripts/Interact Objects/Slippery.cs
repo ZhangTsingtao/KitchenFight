@@ -34,17 +34,18 @@ public class Slippery : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-            Playwet();
+        {
+            FindObjectOfType<AudioManager>().Play("wet");
+            slipperyParticle.Play();
+            GroundWetParticle.Play();
+        }
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Yekis");
+            //Debug.Log("Yekis");
             playerCollider.material = slipperyMaterial;
-
-            slipperyParticle.Play();
-            GroundWetParticle.Play();
 
             timerOn = false;
             timerTime = slipperyTime;
@@ -57,20 +58,14 @@ public class Slippery : MonoBehaviour
         {
             timerOn = true;
             timerTime = slipperyTime;
-            Debug.Log("Should reset time to " + timerTime);
+            //Debug.Log("Should reset time to " + timerTime);
         }
     }
     private void BacktoNormalMaterial()
     {
-        Debug.Log("Back to Normal!!");
+        //Debug.Log("Back to Normal!!");
         playerCollider.material = null;
         slipperyParticle.Stop();
         GroundWetParticle.Stop();
-    }
-
-    private void Playwet()
-    {
-        if(timerOn)
-            FindObjectOfType<AudioManager>().Play("wet");
     }
 }
