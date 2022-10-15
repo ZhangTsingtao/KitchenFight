@@ -22,11 +22,11 @@ public class NewDestructable : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
             MeshRenderer originalMesh = gameObject.GetComponent<MeshRenderer>();
             originalMesh.enabled = false;
             BoxCollider originalCollider = gameObject.GetComponent<BoxCollider>();
             originalCollider.enabled = false;
-            gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
             foreach (Transform child in transform)
             {
