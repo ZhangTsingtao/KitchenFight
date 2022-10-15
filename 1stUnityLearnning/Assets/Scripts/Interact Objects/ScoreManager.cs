@@ -11,7 +11,7 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text newScoreText;
     public TMP_Text newHighscoreText;
 
-    int score = 0;
+    public static int score = 0;
     int highscore = 0;
 
     private void Awake()
